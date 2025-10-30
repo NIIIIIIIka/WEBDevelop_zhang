@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section>
+        <img alt="" src="./images/bg.jpg" id="bg">
+        <img alt="" src="./images/moon.png" id="moon">
+        <img alt="" src="./images/mountain.png" id="mountain">
+        <img alt="" src="./images/road.png" id="road">
+        <!-- <h2 id="text">2312190622丁佳英</h2> -->
+        </section>
     <div class="container">
         <div class="navbar hidden">
             <div class="logo">
@@ -18,52 +25,82 @@
                 <a href="#">Contact</a>
             </div>
         </div>
+        <script>
+            let bg=document.getElementById("bg");
+            let moon=document.getElementById("moon");
+            let mountain=document.getElementById("mountain");
+            let road=document.getElementById("road");
+            let text=document.getElementById("text");
+            window.addEventListener('scroll',function(){
+                var value = window.scrollY;
+                bg.style.top=value*0.5+'px';
+                moon.style.left=-value*0.5+'px';
+                mountain.style.top=-value*0.15+'px';
+                road.style.top=value*0.15+'px';
+                text.style.top=value*1+'px';
+            })
+        </script>
+
+
+
+
+
         <div class="content">
             <div class="my-info">
                 <img src="images/屏幕截图 2025-10-24 111458.png" alt=""></img>
                 <h1>2312190622 丁佳英 成品展示</h1>
             </div>
             <div class="works-container">
-                <div class="work-card"> 
-                    <div class="work-img" id="1" href="register/index.html">
-                        <img alt="1" src="./images/1.png"></img>
+                <a href="./register/index.html">
+                    <div class="work-card" > 
+                        <div class="work-img" id="1">
+                            <img alt="1" src="./images/1.png"></img>
+                        </div>
+                        <div class="work-info">
+                            <p>注册表单</p>
+                        </div>
                     </div>
-                    <div class="work-info">
-                        <p>注册表单</p>
+                </a>
+                <a href="todo/index.html">
+                    <div class="work-card"> 
+                        <div class="work-img" id="2" >
+                            <img alt="2" src="./images/2.png"></img>
+                        </div>
+                        <div class="work-info">
+                            <p>todo</p>
+                        </div>
                     </div>
-                </div>
-                <div class="work-card"> 
-                    <div class="work-img" id="2" href="todo/index.html">
-                        <img alt="2" src="./images/2.png"></img>
+                </a>
+                <a href="quiz/index.html">
+                    <div class="work-card"> 
+                        <div class="work-img" id="3">
+                            <img alt="3" src="./images/3.png"></img>
+                        </div>
+                        <div class="work-info">
+                            <p>Quiz</p>
+                        </div>
                     </div>
-                    <div class="work-info">
-                        <p>todo</p>
+                </a>
+                <a href="password-generate/index.html">
+                    <div class="work-card"> 
+                        <div class="work-img" id="4" >
+                            <img alt="4" src="./images/4.png"></img>
+                        </div>
+                        <div class="work-info">
+                            <p>密码生成器</p>
+                        </div>
                     </div>
-                </div>
-                <div class="work-card"> 
-                    <div class="work-img" id="3" href="quiz/index.html">
-                        <img alt="3" src="./images/3.png"></img>
+                </a>
+                <a href="menuSearch/index.html">
+                    <div class="work-card"> 
+                        <div class="work-img" id="5" href="menuSearch/index.html">
+                            <img alt="5" src="./images/5.png"></img>
+                        </div>
+                        <div class="work-info">
+                            <p>菜单</p>
+                        </div>
                     </div>
-                    <div class="work-info">
-                        <p>Quiz</p>
-                    </div>
-                </div>
-                <div class="work-card"> 
-                    <div class="work-img" id="4" href="password-generate/index.html">
-                        <img alt="4" src="./images/4.png"></img>
-                    </div>
-                    <div class="work-info">
-                        <p>密码生成器</p>
-                    </div>
-                </div>
-                <div class="work-card"> 
-                    <div class="work-img" id="5" href="menuSearch/index.html">
-                        <img alt="5" src="./images/5.png"></img>
-                    </div>
-                    <div class="work-info">
-                        <p>菜单</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

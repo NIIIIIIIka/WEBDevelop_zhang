@@ -2,17 +2,28 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
+}
+body{
+    background: #0a2a43;
+    min-height: 1500px;
+    font-family: sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    line-height: 1.6;
 }
 
 :root {
-    --primary-color: #2c3e50;
-    --primary-color-light: #34495e;
-    --primary-color-dark: #1a252f;
+    --primary-color: #134063;
+    --primary-color-light: #215486;
+    --primary-color-dark: #1b4e7d;
     --text-dark: #333333;
+    --text-primary: #ffffff;
+    --text-secondary: #6c757d;
     --text-light: #f8f9fa;
     --background: #ffffff;
-    --background-light: #f8f9fa;
-    --background-dark: #212529;
+    --background-light: #b3d6f9;
+    --background-dark: #0a2a43;
     --error: #dc3545;
     --success: #28a745;
     --card-bg: #ffffff;
@@ -20,18 +31,65 @@
     --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
-body { 
 
-    font-family: sans-serif;
-    background-color: var(--background-dark);
-    color: var(--text-dark);
-    line-height: 1.6;
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section:before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top,#0a2a43,transparent);
+    z-index: 10000;
+}
+
+section:after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a2a43;
+    z-index: 10000;
+    mix-blend-mode: color;
+}
+
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+#text
+{
+    position: relative;
+    color: #fff;
+    font-size: 6em;
+    z-index: 1;
+}
+
+#road{
+    z-index: 2;
 }
 
 .container{
   
   width: 100%;
-  max-width: 1000px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -50,40 +108,146 @@ body {
     flex-direction: column;
     align-items: center;
 }
-
-.works-container{ 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1.5fr));
-    gap: 2rem;
-}
-.work-card{
-    border-radius: var(--border-radius);
-    background: var(--card-bg);
-    opacity: 0.8;
-    overflow: hidden;
-}
-.work-card:hover{ 
-    opacity: 1;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    cursor: pointer;
-
-}
-.work-img{
-    width: 100%;
-    height: auto;
-
-}
-.work-info{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    align-items: center;
+.my-info h1{
+    color: white;
 }
 
-.work-info p{
-    font-size: 1.2rem;
+/* 作品容器 - 基础布局 */
+.works-container {
+  display: grid;
+  /* 基础列配置：最小300px，自动适配列数 */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1.2fr));
+  gap: 2rem; /* 基础间距 */
+  padding: 1.5rem; /* 容器内边距（小屏幕默认值） */
+  max-width: 1600px; /* 限制最大宽度，避免大屏过宽 */
+  margin: 0 auto; /* 居中容器 */
 }
-.hidden{
-    display: none;
+
+/* 作品卡片 - 基础样式 */
+.work-card {
+  border-radius: var(--border-radius);
+  background: var(--card-bg);
+  opacity: 0.9;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  transform: translateY(0);
+}
+
+/* 卡片悬停效果 */
+.work-card:hover {
+  opacity: 1;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+/* 作品图片 - 自适应裁剪 */
+.work-img {
+  width: 100%;
+  height: 200px; /* 基础高度 */
+  object-fit: cover; /* 保持比例裁剪，不拉伸 */
+  display: block; /* 消除底部间隙 */
+  transition: transform 0.5s ease;
+  overflow: hidden;
+}
+
+.work-card:hover .work-img {
+  transform: scale(1.03); /* 悬停轻微放大 */
+  
+}
+
+/* 作品信息 - 文字排版 */
+.work-info {
+  margin: 1rem 1.2rem; /* 内边距 */
+  padding: auto;
+  text-align: center;
+}
+
+.work-info h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem; /* 标题大小 */
+}
+
+.work-info p {
+  color: var(--text-secondary);
+  font-size: 1rem; /* 描述文字大小 */
+  line-height: 1.5; /* 行高优化可读性 */
+}
+
+/* 隐藏类 */
+.hidden {
+  display: none;
+}
+
+
+
+/* 1. 平板设备（768px ~ 1023px） */
+@media (min-width: 768px) {
+  .works-container {
+    gap: 2.5rem; /* 加大间距，避免拥挤 */
+    padding: 2rem 3rem; /* 增加内边距 */
+  }
+  
+  .work-img {
+    height: 220px; /* 图片高度略增 */
+  }
+  
+  .work-info {
+    margin: 1.2rem 1.5rem;
+  }
+  
+  .work-info h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 2. 桌面设备（1024px ~ 1439px） */
+@media (min-width: 1024px) {
+  .works-container {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 最小宽度略增 */
+    gap: 3rem; /* 进一步加大间距 */
+    padding: 2.5rem 4rem;
+  }
+  
+  .work-img {
+    height: 240px; /* 图片更高 */
+  }
+  
+  .work-info h3 {
+    font-size: 1.6rem;
+  }
+  
+  .work-info p {
+    font-size: 1.1rem;
+  }
+}
+
+/* 3. 大屏设备（1440px及以上） */
+@media (min-width: 1440px) {
+  .works-container {
+    gap: 3.5rem;
+    padding: 3rem 5rem;
+  }
+  
+  .work-img {
+    height: 260px; /* 最大屏幕图片高度 */
+  }
+}
+
+/* 4. 小屏手机（375px以下） */
+@media (max-width: 374px) {
+  .works-container {
+    grid-template-columns: 1fr; /* 强制单列 */
+    padding: 1rem;
+  }
+  
+  .work-img {
+    height: 180px; /* 减小图片高度，避免占满屏幕 */
+  }
+  
+  .work-info h3 {
+    font-size: 1.3rem;
+  }
 }
